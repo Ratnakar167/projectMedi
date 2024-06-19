@@ -10,6 +10,7 @@ import { FooterButtonsComponent } from './components/footer-buttons/footer-butto
 import { ItemTypeComponent } from './components/item-type/item-type.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UomMasterComponent } from '../../uom-master/uom-master.component';
+import { DepartmentComponent } from './components/department/department.component';
 
 const routes: Routes = [
   { path:'',component:AdminDashboardComponent ,
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'footer-buttons', component: FooterButtonsComponent },
       { path: 'item-type', component: ItemTypeComponent },
       { path: 'uom-master', component: UomMasterComponent },
+      {path: 'department',component:DepartmentComponent}
 
     ],
   }
