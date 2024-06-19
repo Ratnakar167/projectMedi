@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterEvent, RouterModule } from '@angular/router';
 import { FormControl,FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { RestserviceService } from '../../services/restservice.service';
 
 @Component({
   selector: 'app-login',
@@ -27,9 +28,9 @@ export class LoginComponent implements OnInit {
     onSubmit():void{
       if (this.loginForm.valid) {
         this.auth.login(this.loginForm.value).subscribe(
-          (result) => {
-            console.log(result);
-            this.router.navigate(['/admin/home']);
+          (result:any) => {
+          //  alert(result);
+           // this.router.navigate(['/admin/home']);
           },
           (err: Error) => {
             alert(err.message);
