@@ -11,6 +11,8 @@ import { ItemTypeComponent } from './components/item-type/item-type.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UomMasterComponent } from '../../uom-master/uom-master.component';
 import { DepartmentComponent } from './components/department/department.component';
+import { UnitmasterComponent } from '../../unitmaster/unitmaster.component';
+import { GstmasterComponent } from '../../gstmaster/gstmaster.component';
 
 const routes: Routes = [
   { path:'',component:AdminDashboardComponent ,
@@ -24,6 +26,11 @@ const routes: Routes = [
       { path: 'item-type', component: ItemTypeComponent },
       { path: 'uom-master', component: UomMasterComponent },
       {path: 'department',component:DepartmentComponent}
+      { path: 'unit-master', component: UnitmasterComponent },
+      { path: 'gst-master', component: GstmasterComponent },
+
+
+      
 
     ],
   }

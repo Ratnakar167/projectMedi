@@ -1,0 +1,83 @@
+.main-container{
+    background: url(https://img.freepik.com/premium-photo/detail-doctor-holding-handfull-various-colorful-pills-both-hands_341862-14618.jpg?w=900);
+    background-size: cover;
+    height: 90vh;
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sub-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 698px;
+    width: 80%;
+    height: 70%;
+    margin:0px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.title{
+    font-weight: 600;
+    color: blueviolet;
+    font-size: medium;
+}
+.gst-label{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+
+}
+.des-label{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.gst-per{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.CGST{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.SGST{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 600; 
+    padding-bottom: 10px;
+}
+.valid-date{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 600; 
+    padding-bottom: 10px;
+}
+.valid-from-date{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 600; 
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.valid-label{
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.required{
+    margin-right: 20px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    color: red;
+}
