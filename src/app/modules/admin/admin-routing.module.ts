@@ -13,6 +13,8 @@ import { UomMasterComponent } from '../../uom-master/uom-master.component';
 import { DepartmentComponent } from './components/department/department.component';
 import { UnitmasterComponent } from '../../unitmaster/unitmaster.component';
 import { GstmasterComponent } from '../../gstmaster/gstmaster.component';
+import { SubdepartmentsComponent } from './components/subdepartments/subdepartments.component';
+
 
 const routes: Routes = [
   { path:'',component:AdminDashboardComponent ,
@@ -28,6 +30,7 @@ const routes: Routes = [
       {path: 'department',component:DepartmentComponent},
       { path: 'unit-master', component: UnitmasterComponent },
       { path: 'gst-master', component: GstmasterComponent },
+      { path: 'subdepartments', component: SubdepartmentsComponent },
 
 
       
