@@ -25,7 +25,7 @@ const routes: Routes = [
       { path: 'footer-buttons', component: FooterButtonsComponent },
       { path: 'item-type', component: ItemTypeComponent },
       { path: 'uom-master', component: UomMasterComponent },
-      {path: 'department',component:DepartmentComponent}
+      {path: 'department',component:DepartmentComponent},
       { path: 'unit-master', component: UnitmasterComponent },
       { path: 'gst-master', component: GstmasterComponent },
 
