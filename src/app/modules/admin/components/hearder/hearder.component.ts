@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hearder',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './hearder.component.html',
   styleUrl: './hearder.component.scss'
 })
-export class HearderComponent {
-
+export class HearderComponent implements OnInit {
+  @Input() username: string = '';
+  constructor() { }
+  ngOnInit(): void {
+    
+  }
 }

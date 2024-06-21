@@ -10,7 +10,7 @@ import { error } from 'console';
 })
 export class AuthService {
   private localStorageAvailable: boolean;
-
+  public username: any;
   constructor(
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -57,6 +57,8 @@ export class AuthService {
     };
     this.restservice.post('/userAPi/login/', data).subscribe(
       (result: any) => {
+        console.log(result.employee_name);
+        this.username = result.employee_name;
         this.setToken('abcdefghijklmnopqrstuvwxyz');
         this.router.navigate(['/home']);
         return of({ name: 'Tarique Akhtar', email: 'admin@gmail.com' });
