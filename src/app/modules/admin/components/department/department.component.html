@@ -4,48 +4,48 @@
             Create Departments
         </div>
         <div class="form">
-            
+            <form  [formGroup]="departmentForm" (ngSubmit)="onDepartmentSubmit()" >
                 <div class="d-flex flex-row justify-content-left">
                 <div class="d-flex flex-column justify-content-left">
                     <div class="inputfield">
                         <label>Department Name:<span class="required">*</span></label>
-                        <input type="text" class="input" required>
+                        <input type="text" class="form-control input"   formControlName="department_name" required>
                     </div>
                     <div class="inputfield">
                         <label>Department Code:</label>
-                        <input type="text" class="input">
+                        <input type="text" class="form-control input"  formControlName="department_code">
                     </div>
-                    <div class="inputfield">
+                     <div class="inputfield">
                         <label>Department Head:</label>
-                        <input type="text" class="input">
+                        <input type="text" class="input" formControlName="head_dept">
                     </div>
                     <div class="inputfield">
                         <label>Email ID:</label>
-                        <input type="text" class="input">
+                        <input type="text" class="input" formControlName="email_id">
                     </div>
                 </div>
                 <div class="d-flex flex-column justify-content-left">
                     <div class="inputfield">
                         <label>Description:</label>
-                        <input type="text" class="input">
+                        <input type="text" class="input" formControlName="description_dept">
                     </div>
                     <div class="inputfield">
                         <label>IP Indenting Dept:</label>
-                        <div class="custom_select">
-                            <select required>
+                        <div class="custom_select" >
+                            <select required formControlName="ip_indenting_dept">
                                 <option value="">Select</option>
-                                <option value="male">Asset</option>
-                                <option value="female">Medi</option>
+                                <option value="1">Asset</option>
+                                <option value="2">Medi</option>
                             </select>
                         </div>
                     </div>
                     <div class="inputfield">
                         <label>Select Location Name:<span class="required">*</span></label>
-                        <div class="custom_select">
-                            <select required>
+                        <div class="custom_select" >
+                            <select required formControlName="location_id">
                                 <option value="">Select</option>
-                                <option value="male">Asset</option>
-                                <option value="female">Medi</option>
+                                <option value="1">Asset</option>
+                                <option value="2">Medi</option>
                             </select>
                         </div>
                     </div>
@@ -54,70 +54,71 @@
                     <div class="d-flex flex-column">
                         <label><span class="fw-bold">Issue Point Indication:</span></label>
                         <div class="form-check">
-                            <input type="radio" id="GeneralPoint" name="IssuePointIndication" value="GeneralPoint" class="form-check-input">
+                            <input type="radio" id="GeneralPoint" formControlName="issue_pt_indication" value="1" class="form-check-input">
                             <label for="GeneralPoint" class="form-check-label">General Point</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" id="WardPoint" name="IssuePointIndication" value="WardPoint" class="form-check-input">
+                            <input type="radio" id="WardPoint" formControlName="issue_pt_indication" value="2" class="form-check-input">
                             <label for="WardPoint" class="form-check-label">Ward Point</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" id="OTPoint" name="IssuePointIndication" value="OTPoint" class="form-check-input">
+                            <input type="radio" id="OTPoint" formControlName="issue_pt_indication" value="3" class="form-check-input">
                             <label for="OTPoint" class="form-check-label">OT Point</label>
                         </div>
                         <div class="form-check">
-                                <input type="radio" id="PharmacyPoint" name="IssuePointIndication" value="PharmacyPoint" class="form-check-input">
+                                <input type="radio" id="PharmacyPoint" formControlName="issue_pt_indication" value="4" class="form-check-input">
                                 <label for="PharmacyPoint" class="form-check-label">Pharmacy Point</label>
                         </div>
-                        <div class="form-check">
+                        <!-- <div class="form-check">
                             <label for="NursingStation">
                             <input type="checkbox" id="NursingStation" name="NursingStation" value="NursingStation">
                             Nursing Station
                             </label>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="inputfield">
                     <div class="d-flex flex-column">
                     <div class="form-check">
                         <label for="ConsignmentDepartment">
-                        <input type="checkbox" id="ConsignmentDepartment" name="ConsignmentDepartment" value="ConsignmentDepartment">
+                        <input type="checkbox" id="ConsignmentDepartment" formControlName="consigment_dept" value="1">
                         Consignment Department
                         </label>
-                    </div>
-                <!-- </div> -->
-                <!-- <div class="inputfield"> -->
-                    
-                        <label>Login Department:</label>
+                    </div> 
+                    <label>Login Department:</label>
                         <div class="form-check">
-                            <input type="radio" id="Inventory" name="LoginDepartment" value="Inventory" class="form-check-input">
+                            <input type="radio" id="Inventory" formControlName="login_dept" value="1" class="form-check-input">
                             <label for="Inventory" class="form-check-label">Inventory</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" id="Pharmacy" name="LoginDepartment" value="Pharmacy" class="form-check-input">
+                            <input type="radio" id="Pharmacy" formControlName="login_dept" value="2" class="form-check-input">
                             <label for="Pharmacy" class="form-check-label">Pharmacy</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" id="Both" name="LoginDepartment" value="Both" class="form-check-input">
+                            <input type="radio" id="Both" formControlName="login_dept" value="3" class="form-check-input">
                             <label for="Both" class="form-check-label">Both</label>
                         </div>
                     </div>
                 </div>
                 
-            </div>
-            <div class="inputfield">
+            </div> 
+             <div class="inputfield">
                 <div class="d-flex flex-row">
                     <label>Status:</label>
                     <div class="form-check">
-                        <input type="radio" id="Active" name="Status" value="Active" class="form-check-input">
+                        <input type="radio" id="Active" formControlName="status" value="1" class="form-check-input">
                         <label for="Active" class="form-check-label">Active</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" id="Inactive" name="Status" value="Inactive" class="form-check-input">
+                        <input type="radio" id="Inactive" formControlName="status" value="0" class="form-check-input">
                         <label for="Inactive" class="form-check-label">Inactive</label>
-                    </div> 
+                    </div>
                 </div>  
+            </div> 
+            <div class="inputfield col-md-2 pull-right">
+                <button type="submit" class="btn">Submit</button>
             </div>
+        </form>
         </div>
     </div>
 

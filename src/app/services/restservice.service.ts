@@ -22,4 +22,8 @@ export class RestserviceService {
     public post(url:string, data:any):Observable<any>{
       return this.HttpClient.post(this.url+url, data);
     }
+
+    public CreateDepartment(url:string, data:any):Observable<any>{
+      return this.HttpClient.post(this.url+url, data);
+    }
 }
