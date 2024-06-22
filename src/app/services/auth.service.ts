@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { RestserviceService } from './restservice.service';
 import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,8 @@ export class AuthService {
   constructor(
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private restservice: RestserviceService
+    private restservice: RestserviceService,
+    private toastr: ToastrService
   ) {
     this.localStorageAvailable = isPlatformBrowser(this.platformId);
   }
@@ -57,14 +59,14 @@ export class AuthService {
     };
     this.restservice.post('/userAPi/login/', data).subscribe(
       (result: any) => {
-        console.log(result.employee_name);
+        this.toastr.success('Welcome', 'Login Successfully!');
         this.username = result.employee_name;
         this.setToken('abcdefghijklmnopqrstuvwxyz');
         this.router.navigate(['/home']);
         return of({ name: 'Tarique Akhtar', email: 'admin@gmail.com' });
       },
       (error: Error) => {
-        alert('Invalid Email and Password')
+        this.toastr.error('Login Failed', 'Email and Password Invalid!');
       }
     );
     return of({});

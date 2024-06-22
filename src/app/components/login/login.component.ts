@@ -4,6 +4,7 @@ import { FormControl,FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { RestserviceService } from '../../services/restservice.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,22 +19,21 @@ export class LoginComponent implements OnInit {
     password:new FormControl(''),
   });
 
-  constructor(private auth:AuthService,private router:Router){
+  constructor(private auth:AuthService,private router:Router,private toastr: ToastrService){
 
   }
   ngOnInit() {
-
+   // this.showSuccess();
     }
 
     onSubmit():void{
       if (this.loginForm.valid) {
         this.auth.login(this.loginForm.value).subscribe(
           (result:any) => {
-          //  alert(result);
-           // this.router.navigate(['/admin/home']);
+           // this.toastr.success('Welcome', 'Login Successfully!');
           },
           (err: Error) => {
-            alert(err.message);
+            this.toastr.error('Login Failed', 'Email and Password Invalid!');
           }
         );
       }
