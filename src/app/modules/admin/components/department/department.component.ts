@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RestserviceService } from '../../../../services/restservice.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { RestserviceService } from '../../../../services/restservice.service';
 })
 export class DepartmentComponent implements OnInit{
   public departmentForm: FormGroup;
-  constructor(private restservice: RestserviceService) { 
+  constructor(private restservice: RestserviceService, private toastr: ToastrService) { 
     this.departmentForm = new FormGroup({});
   }
 
@@ -49,10 +50,12 @@ export class DepartmentComponent implements OnInit{
       console.log(formdata);
       this.restservice.CreateDepartment('/userAPi/departmentcreate/',this.departmentForm.value).subscribe(
         (result: any) => {
-          console.log(result);
+          this.toastr.success('Department Created Successfully');
+          this.departmentForm.reset();
         },
         (error: any) => {
-          console.log(error);
+          this.toastr.error('Department Creation Failed');
+          this.departmentForm.reset();
         }
       );
     }
