@@ -17,7 +17,8 @@
                     </div>
                      <div class="inputfield">
                         <label>Department Head:</label>
-                        <input type="text" class="input" formControlName="head_dept">
+                        <input type="text" class="input" formControlName="head_dept" >
+                        <i class="fa fa-user icon" (click)="Getsearchpopup()"></i>
                     </div>
                     <div class="inputfield">
                         <label>Email ID:</label>
@@ -158,3 +159,24 @@
     </div>
 </div>
      -->
+
+    <!-- <p-dialog header="Edit Profile" [modal]="true" [(visible)]="departmentpopup" [style]="{ width: '75rem' }" class="depart" closable="false;"> -->
+    <p-dialog class="dialog-no-header" header="Department List" class="pop" position="top"  [(visible)]="departmentpopup" modal="modal"   [responsive]="true" [style]="{width: '70vw',top:'70px', padding: '15px', 'border-radius': '14px',background: 'aliceblue'}"
+            [breakpoints]="{'800px': '100vw','650px': '100vw'}">
+            <!-- <div class="card-header with-border"><h3 class="card-title">Department List</h3></div> -->
+        <div class='table-responsive'>
+            <table id="data_1" class="table table-hover table-bordered">
+                <tbody>
+                    <tr (click)="getdepartmentdetails(1)"><td>Test </td><td>[8008208507]</td></tr>
+                    <tr (click)="getdepartmentdetails(1)"><td>Test </td><td>[8008208507]</td></tr>
+                    <tr (click)="getdepartmentdetails(1)"><td>Test </td><td>[8008208507]</td></tr>
+                    <tr (click)="getdepartmentdetails(1)"><td>Test </td><td>[8008208507]</td></tr>
+                    <tr (click)="getdepartmentdetails(1)"><td>Test</td><td>[8008208507]</td></tr>
+                    <tr (click)="getdepartmentdetails(1)"><td>Test </td><td>[8008208507]</td></tr>
+                    <tr (click)="getdepartmentdetails(1)"><td>Test </td><td>[8008208507]</td></tr>
+                    <tr (click)="getdepartmentdetails(1)"><td>Test </td><td>[8008208507]</td></tr>
+                </tbody>
+            </table> 
+        </div>
+    </p-dialog>
+ 

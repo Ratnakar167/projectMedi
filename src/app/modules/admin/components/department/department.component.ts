@@ -3,12 +3,12 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RestserviceService } from '../../../../services/restservice.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,DialogModule],
   templateUrl: './department.component.html',
   styleUrl: './department.component.scss'
 })
@@ -17,7 +17,7 @@ export class DepartmentComponent implements OnInit{
   constructor(private restservice: RestserviceService, private toastr: ToastrService) { 
     this.departmentForm = new FormGroup({});
   }
-
+  public departmentpopup: boolean = false;
   ngOnInit(): void {
     this.initDepartentForm();
   }
@@ -59,5 +59,22 @@ export class DepartmentComponent implements OnInit{
         }
       );
     }
+  }
+
+ 
+  Getsearchpopup() {
+     this.departmentpopup = true;
+    // this.updateSheetingRoaster.modal('show');
+    // this.id = item.id;
+    // this.service_feedback_type = item.service_feedback_type;
+    // this.service_email = item.service_email;
+    // this.name = item.name;
+    // this.setForm(this.service_feedback_type, this.service_email, this.name);
+  }
+
+  getdepartmentdetails(id:any){
+    console.log(id);
+    this.departmentpopup = false;
+    this.departmentForm.controls['head_dept'].setValue(id);
   }
 }
