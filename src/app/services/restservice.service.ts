@@ -30,4 +30,8 @@ export class RestserviceService {
     public GetDepartmentList(url:string):Observable<any>{
       return this.HttpClient.get(this.url+url);
     }
+
+    public CreateSubDepartment(url:string, data:any):Observable<any>{
+      return this.HttpClient.post(this.url+url, data);
+    }
 }

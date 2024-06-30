@@ -22,6 +22,7 @@ export class SubdepartmentsComponent implements OnInit {
   public subdepartmentForm: FormGroup;
   public subdepartmentpopup: boolean = false;
   public departmentList: any = [];
+  public departmentId: any;
   ngOnInit(): void {
     this.initSubDepartentForm();
     this.GetdepartmentList();
@@ -66,6 +67,7 @@ export class SubdepartmentsComponent implements OnInit {
   onSubDepartmentSubmit() {
     if (this.subdepartmentForm.valid) {
       // Get form Data and send to server
+      this.subdepartmentForm.value.department_id = this.departmentId;
       if(this.subdepartmentForm.value.complaint_maintance_dep == true){
         this.subdepartmentForm.value.complaint_maintance_dep = 1;
       }
@@ -99,7 +101,7 @@ export class SubdepartmentsComponent implements OnInit {
       // Merge user_id into formdata
       formdata.created_by = user_id;
       console.log(formdata);
-      this.restservice.CreateDepartment('/userAPi/subdepartmentcreate/',this.subdepartmentForm.value).subscribe(
+      this.restservice.CreateSubDepartment('/userAPi/createSubDepartment/',this.subdepartmentForm.value).subscribe(
         (result: any) => {
           this.toastr.success('Sub Department Created Successfully');
           this.subdepartmentForm.reset();
@@ -117,6 +119,18 @@ export class SubdepartmentsComponent implements OnInit {
   }
 
   getdepartmentdetails(id: any) {
-    console.log(id);
+    this.subdepartmentForm.controls['department_id'].setValue(this.GetDepartmentNamebyid(id));
+    this.departmentId = id;
+    this.subdepartmentpopup = false;
+  }
+
+  GetDepartmentNamebyid(id: any) {
+    let department_name = '';
+    this.departmentList.forEach((element: any) => {
+      if (element.department_id == id) {
+        department_name = element.department_name + ' - ' + element.department_code;
+      }
+    });
+    return department_name;
   }
 }
