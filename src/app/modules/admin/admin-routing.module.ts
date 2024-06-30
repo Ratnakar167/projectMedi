@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UomMasterComponent } from '../../uom-master/uom-master.component';
 import { UnitmasterComponent } from '../../unitmaster/unitmaster.component';
 import { GstmasterComponent } from '../../gstmaster/gstmaster.component';
+import { HsnmasterComponent } from '../../hsnmaster/hsnmaster.component';
 
 const routes: Routes = [
   { path:'',component:AdminDashboardComponent ,
@@ -26,10 +27,7 @@ const routes: Routes = [
       { path: 'uom-master', component: UomMasterComponent },
       { path: 'unit-master', component: UnitmasterComponent },
       { path: 'gst-master', component: GstmasterComponent },
-
-
-      
-
+      { path: 'hsn-master', component: HsnmasterComponent },
     ],
   }
 ];
