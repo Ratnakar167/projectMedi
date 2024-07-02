@@ -14,6 +14,7 @@ import { DepartmentComponent } from './components/department/department.componen
 import { UnitmasterComponent } from '../../unitmaster/unitmaster.component';
 import { GstmasterComponent } from '../../gstmaster/gstmaster.component';
 import { SubdepartmentsComponent } from './components/subdepartments/subdepartments.component';
+import { LocationsComponent } from './components/locations/locations.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'unit-master', component: UnitmasterComponent },
       { path: 'gst-master', component: GstmasterComponent },
       { path: 'subdepartments', component: SubdepartmentsComponent },
+      { path: 'locations', component: LocationsComponent },
 
 
       
