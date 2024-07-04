@@ -196,34 +196,13 @@
     <p-dialog class="dialog-no-header" header="Department List" class="pop" position="top"  [(visible)]="subdepartmentpopup" modal="modal"   [responsive]="true" [style]="{width: '70vw',top:'70px', padding: '15px', 'border-radius': '14px',background: 'aliceblue'}"
             [breakpoints]="{'800px': '100vw','650px': '100vw'}">
         <div class='table-responsive'>
-            <p-table  #dt1 [value]="departmentList" 
-            [paginator]="true"
-            [rows]="5"
-            [tableStyle]="{ 'min-width': '50rem' }"
-            [globalFilterFields]="['department_name', 'department_code']"
-            [rowsPerPageOptions]="[5, 10, 20]" class="table table-hover table-bordered">
-            <ng-template pTemplate="caption">
-                <div class="flex">
-                    <span class="p-input-icon-left ml-auto">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text"  (input)="dt1.filterGlobal($any($event).target.value, 'contains')" placeholder="Search keyword" />
-                    </span>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="header">
-                <tr>
-                    <th  pSortableColumn="department_name" style="width:25%">Name <p-sortIcon field="department_name" /></th>
-                    <th  pSortableColumn="department_code" style="width:25%">code <p-sortIcon field="department_code" /></th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-customer>
-                <tr>
-                    <td>{{ customer.department_name }}</td>
-                    <td>{{ customer.department_code }}</td>
-                </tr>
-            </ng-template>
-        </p-table>
-            <table id="data_1" class="table table-hover table-bordered">
+            <table  class="table table-hover table-bordered" datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" style="width: 100%;" >
+                <thead>
+                    <tr>
+                        <th>Sub Department Name</th>
+                        <th>Sub Department Code</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr *ngFor="let depat of departmentList" (click)="getdepartmentdetails(depat.department_id)">
                         <td>{{depat.department_name}}</td>

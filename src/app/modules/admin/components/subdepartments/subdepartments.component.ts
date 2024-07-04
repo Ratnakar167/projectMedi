@@ -6,12 +6,15 @@ import { ToastrService } from 'ngx-toastr';
 import { DialogModule } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
+import { DataTablesModule } from 'angular-datatables';
+import { Config } from 'datatables.net';
+import { Subject } from 'rxjs';
 
 
 @Component({
   selector: 'app-subdepartments',
   standalone: true,
-  imports: [ReactiveFormsModule,DialogModule,CommonModule,TableModule],
+  imports: [ReactiveFormsModule,DialogModule,CommonModule,TableModule,DataTablesModule],
   templateUrl: './subdepartments.component.html',
   styleUrl: './subdepartments.component.scss'
 })
@@ -25,10 +28,16 @@ export class SubdepartmentsComponent implements OnInit {
   public departmentList: any = [];
   public departmentId: any;
   loading: boolean = true;
-
+  dtoptions:Config = {};
+  dtTrigger:Subject<any> = new Subject<any>();
   ngOnInit(): void {
     this.initSubDepartentForm();
     this.GetdepartmentList();
+    this.dtoptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true
+    };
   }
    
   initSubDepartentForm() {
@@ -60,6 +69,7 @@ export class SubdepartmentsComponent implements OnInit {
     this.restservice.GetDepartmentList('/userAPi/departmentlist/').subscribe(
       (result: any) => {
         this.departmentList = result;
+        this.dtTrigger.next(null);
       },
       (error: any) => {
         this.toastr.error('Department List Fetch Failed');
