@@ -1,21 +1,22 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RestserviceService } from '../../../../services/restservice.service';
 import { ToastrService } from 'ngx-toastr';
 import { DialogModule } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
+import { TableModule } from 'primeng/table';
 
 
 @Component({
   selector: 'app-subdepartments',
   standalone: true,
-  imports: [ReactiveFormsModule,DialogModule,CommonModule],
+  imports: [ReactiveFormsModule,DialogModule,CommonModule,TableModule],
   templateUrl: './subdepartments.component.html',
   styleUrl: './subdepartments.component.scss'
 })
 export class SubdepartmentsComponent implements OnInit {
-    
+
   constructor(private restservice: RestserviceService, private toastr: ToastrService) {
     this.subdepartmentForm = new FormGroup({});
   }
@@ -23,6 +24,8 @@ export class SubdepartmentsComponent implements OnInit {
   public subdepartmentpopup: boolean = false;
   public departmentList: any = [];
   public departmentId: any;
+  loading: boolean = true;
+
   ngOnInit(): void {
     this.initSubDepartentForm();
     this.GetdepartmentList();
@@ -133,4 +136,6 @@ export class SubdepartmentsComponent implements OnInit {
     });
     return department_name;
   }
+
+ 
 }

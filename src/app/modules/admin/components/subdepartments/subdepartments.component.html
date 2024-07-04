@@ -1,201 +1,228 @@
-<div class="wrapper">
-    <div class="title d-flex flex-row">
-        Create Sub Departments
-        <!-- <h4 class="programmer">
-            Programmer
-        </h4> -->
+    <div class="wrapper">
+        <div class="title d-flex flex-row">
+            Create Sub Departments
+            <!-- <h4 class="programmer">
+                Programmer
+            </h4> -->
+        </div>
+        <div class="form">
+            <form  [formGroup]="subdepartmentForm" (ngSubmit)="onSubDepartmentSubmit()" >
+                <div class="d-flex flex-row justify-content-left">
+                    <div class="d-flex flex-column justify-content-left">
+                        <div class="inputfield">
+                            <label>Store Type:<span class="required">*</span></label>
+                            <div class="custom_select">
+                                <select required class="form-control" formControlName="store_type">
+                                    <option value="">Select</option>
+                                    <option value="1">Asset</option>
+                                    <option value="2">Medi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="inputfield">
+                            <label>Sub Department Name:</label>
+                            <input type="text" class=" form-control" formControlName="sub_department_name">
+                        </div>
+                        <div class="inputfield">
+                            <label>Sub Department Code:</label>
+                            <input type="text" class=" form-control" formControlName="sub_department_code">
+                        </div>
+                        <div class="inputfield">
+                            <label><span class="fw-bold required">Under Department:*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control"  formControlName="department_id">
+                                <div class="input-group-text">
+                                <i class="fa fa-search" (click)="GetDepartmentsearchpopup()"></i>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="inputfield">
+                            <label>Description:</label>
+                            <input type="text" class=" form-control" formControlName="description_sub_dept">
+                        </div>
+                        <div class="inputfield">
+                            <label><span class="fw-bold">Incharge:</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="incharge">
+                                <div class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inputfield">
+                            <label><span class="fw-bold">Prefix:</span></label>
+                            <input type="text" class=" form-control" formControlName="prefix">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-left">
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="ComplaintMaintainanceDepartment">
+                                    <input type="checkbox" id="ComplaintMaintainanceDepartment"
+                                    formControlName="complaint_maintance_dep" value="1" class="form-check-input">
+                                    Complaint/Maintainance Department
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="CSSDDepartment">
+                                    <input type="checkbox" id="CSSDDepartment" formControlName="cssd_dept" value="1" class="form-check-input">
+                                    CSSD Department
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="LinenDepartment">
+                                    <input type="checkbox" id="LinenDepartment" formControlName="linenn_dept" value="1" class="form-check-input">
+                                    Linen Department
+                                </label>
+                            </div>
+                        </div>
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="HouseKeepingDepartment">
+                                    <input type="checkbox" id="HouseKeepingDepartment" formControlName="house_keeping_dept"
+                                        value="1" class="form-check-input">
+                                    House Keeping Department
+                                </label>
+                            </div>
+                        </div>
+                        <!-- <div class="inputfield">
+                            <label><strong><u>Description:</u></strong></label>
+                            <input type="text" class="form-control">
+                        </div> -->
+                        <div class="inputfield">
+                            <label>Cash Purchase:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="cash_purchase">
+                                <div class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="TransitDepartment">
+                                    <input type="checkbox" id="TransitDepartment" formControlName="transit_dept"
+                                        value="1" class="form-check-input">
+                                    Transit Department
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-left">
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="PriorityDepartment">
+                                    <input type="checkbox" id="PriorityDepartment" formControlName="priority_dept"
+                                        value="1" class="form-check-input">
+                                    Priority Department For Complaint Management
+                                    <br><span class="fw-bold">For Auto Balancing Consumption Calculation</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="Dontallowdues">
+                                    <input type="checkbox" id="Dontallowdues" formControlName="cash_patient_return" value="1" class="form-check-input">
+                                    Dont Allow Dues For Cash Patient Return Days
+                                    <br><span class="fw-bold">Non Moving Returns</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="ApprovalNotRequired">
+                                    <input type="checkbox" id="ApprovalNotRequired" formControlName="indent_pharmacy"
+                                        value="1" class="form-check-input">
+                                    Approval Not Required For Online Indent Pharmacy Department...:
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-left">
+                        <div class="inputfield">
+                            <label>Name For Print:</label>
+                            <input type="text" class=" form-control" formControlName="name_print">
+                        </div>
+                        <div class="inputfield">
+                            <label>Purchase Department:</label>
+                            <input type="text" class=" form-control" formControlName="purchase_dept">
+                        </div>
+                        <div class="inputfield">
+                            <div class="form-check">
+                                <label for="AutoConsumption">
+                                    <input type="checkbox" id="AutoConsumption" formControlName="auto_consumption" value="1" class="form-check-input">
+                                    Auto Consumption:
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="inputfield">
+                    <label>Status:</label>
+                    <div class="form-check">
+                        <input type="radio" id="active" formControlName="status" value="1" class="form-check-input">
+                        <label for="active" class="form-check-label">Active</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="inactive" formControlName="status" value="0" class="form-check-input">
+                        <label for="inactive" class="form-check-label">Inactive</label>
+                    </div>
+                    <div class="col-md-2 pull-right">
+                        <button type="submit" class="btn">Submit</button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
     </div>
-    <div class="form">
-        <form  [formGroup]="subdepartmentForm" (ngSubmit)="onSubDepartmentSubmit()" >
-            <div class="d-flex flex-row justify-content-left">
-                <div class="d-flex flex-column justify-content-left">
-                    <div class="inputfield">
-                        <label>Store Type:<span class="required">*</span></label>
-                        <div class="custom_select">
-                            <select required class="form-control" formControlName="store_type">
-                                <option value="">Select</option>
-                                <option value="1">Asset</option>
-                                <option value="2">Medi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="inputfield">
-                        <label>Sub Department Name:</label>
-                        <input type="text" class=" form-control" formControlName="sub_department_name">
-                    </div>
-                    <div class="inputfield">
-                        <label>Sub Department Code:</label>
-                        <input type="text" class=" form-control" formControlName="sub_department_code">
-                    </div>
-                    <div class="inputfield">
-                        <label><span class="fw-bold required">Under Department:*</span></label>
-                        <div class="input-group">
-                            <input type="text" class="form-control"  formControlName="department_id">
-                            <div class="input-group-text">
-                               <i class="fa fa-search" (click)="GetDepartmentsearchpopup()"></i>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                    <div class="inputfield">
-                        <label>Description:</label>
-                        <input type="text" class=" form-control" formControlName="description_sub_dept">
-                    </div>
-                    <div class="inputfield">
-                        <label><span class="fw-bold">Incharge:</span></label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" formControlName="incharge">
-                            <div class="input-group-text">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-search" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="inputfield">
-                        <label><span class="fw-bold">Prefix:</span></label>
-                        <input type="text" class=" form-control" formControlName="prefix">
-                    </div>
-                </div>
-                <div class="d-flex flex-column justify-content-left">
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="ComplaintMaintainanceDepartment">
-                                <input type="checkbox" id="ComplaintMaintainanceDepartment"
-                                formControlName="complaint_maintance_dep" value="1" class="form-check-input">
-                                Complaint/Maintainance Department
-                            </label>
-                        </div>
-
-                    </div>
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="CSSDDepartment">
-                                <input type="checkbox" id="CSSDDepartment" formControlName="cssd_dept" value="1" class="form-check-input">
-                                CSSD Department
-                            </label>
-                        </div>
-
-                    </div>
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="LinenDepartment">
-                                <input type="checkbox" id="LinenDepartment" formControlName="linenn_dept" value="1" class="form-check-input">
-                                Linen Department
-                            </label>
-                        </div>
-                    </div>
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="HouseKeepingDepartment">
-                                <input type="checkbox" id="HouseKeepingDepartment" formControlName="house_keeping_dept"
-                                    value="1" class="form-check-input">
-                                House Keeping Department
-                            </label>
-                        </div>
-                    </div>
-                    <!-- <div class="inputfield">
-                        <label><strong><u>Description:</u></strong></label>
-                        <input type="text" class="form-control">
-                    </div> -->
-                    <div class="inputfield">
-                        <label>Cash Purchase:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" formControlName="cash_purchase">
-                            <div class="input-group-text">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-search" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="TransitDepartment">
-                                <input type="checkbox" id="TransitDepartment" formControlName="transit_dept"
-                                    value="1" class="form-check-input">
-                                Transit Department
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column justify-content-left">
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="PriorityDepartment">
-                                <input type="checkbox" id="PriorityDepartment" formControlName="priority_dept"
-                                    value="1" class="form-check-input">
-                                Priority Department For Complaint Management
-                                <br><span class="fw-bold">For Auto Balancing Consumption Calculation</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="Dontallowdues">
-                                <input type="checkbox" id="Dontallowdues" formControlName="cash_patient_return" value="1" class="form-check-input">
-                                Dont Allow Dues For Cash Patient Return Days
-                                <br><span class="fw-bold">Non Moving Returns</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="ApprovalNotRequired">
-                                <input type="checkbox" id="ApprovalNotRequired" formControlName="indent_pharmacy"
-                                    value="1" class="form-check-input">
-                                Approval Not Required For Online Indent Pharmacy Department...:
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column justify-content-left">
-                    <div class="inputfield">
-                        <label>Name For Print:</label>
-                        <input type="text" class=" form-control" formControlName="name_print">
-                    </div>
-                    <div class="inputfield">
-                        <label>Purchase Department:</label>
-                        <input type="text" class=" form-control" formControlName="purchase_dept">
-                    </div>
-                    <div class="inputfield">
-                        <div class="form-check">
-                            <label for="AutoConsumption">
-                                <input type="checkbox" id="AutoConsumption" formControlName="auto_consumption" value="1" class="form-check-input">
-                                Auto Consumption:
-                            </label>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="inputfield">
-                <label>Status:</label>
-                <div class="form-check">
-                    <input type="radio" id="active" formControlName="status" value="1" class="form-check-input">
-                    <label for="active" class="form-check-label">Active</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" id="inactive" formControlName="status" value="0" class="form-check-input">
-                    <label for="inactive" class="form-check-label">Inactive</label>
-                </div>
-                <div class="col-md-2 pull-right">
-                    <button type="submit" class="btn">Submit</button>
-                </div>
-            </div>
-            
-        </form>
-    </div>
-</div>
     <p-dialog class="dialog-no-header" header="Department List" class="pop" position="top"  [(visible)]="subdepartmentpopup" modal="modal"   [responsive]="true" [style]="{width: '70vw',top:'70px', padding: '15px', 'border-radius': '14px',background: 'aliceblue'}"
             [breakpoints]="{'800px': '100vw','650px': '100vw'}">
         <div class='table-responsive'>
+            <p-table  #dt1 [value]="departmentList" 
+            [paginator]="true"
+            [rows]="5"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [globalFilterFields]="['department_name', 'department_code']"
+            [rowsPerPageOptions]="[5, 10, 20]" class="table table-hover table-bordered">
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text"  (input)="dt1.filterGlobal($any($event).target.value, 'contains')" placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th  pSortableColumn="department_name" style="width:25%">Name <p-sortIcon field="department_name" /></th>
+                    <th  pSortableColumn="department_code" style="width:25%">code <p-sortIcon field="department_code" /></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer>
+                <tr>
+                    <td>{{ customer.department_name }}</td>
+                    <td>{{ customer.department_code }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
             <table id="data_1" class="table table-hover table-bordered">
                 <tbody>
                     <tr *ngFor="let depat of departmentList" (click)="getdepartmentdetails(depat.department_id)">
