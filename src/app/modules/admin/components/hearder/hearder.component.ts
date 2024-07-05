@@ -1,4 +1,5 @@
 import { Component,Input,OnInit } from '@angular/core';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-hearder',
@@ -8,9 +9,10 @@ import { Component,Input,OnInit } from '@angular/core';
   styleUrl: './hearder.component.scss'
 })
 export class HearderComponent implements OnInit {
-  @Input() username: string = '';
-  constructor() { }
-  ngOnInit(): void {
-    
+  username: string | null = null;
+  constructor(private authService: AuthService) { }
+  ngOnInit() {
+    console.log('HearderComponent',this.username);  
+    this.authService.username$.subscribe(username => (this.username = username));
   }
 }

@@ -5,13 +5,15 @@ import { isPlatformBrowser } from '@angular/common';
 import { RestserviceService } from './restservice.service';
 import { error } from 'console';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private localStorageAvailable: boolean;
-  public username: any;
+  private usernameSubject = new BehaviorSubject<string | null>(null);
+  username$ = this.usernameSubject.asObservable();
   constructor(
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -60,7 +62,7 @@ export class AuthService {
     this.restservice.post('/userAPi/login/', data).subscribe(
       (result: any) => {
         this.toastr.success('Welcome', 'Login Successfully!');
-        this.username = result.employee_name;
+        this.usernameSubject.next(result.employee_name);
         this.setToken('abcdefghijklmnopqrstuvwxyz');
         this.router.navigate(['/home']);
         return of({ name: 'Tarique Akhtar', email: 'admin@gmail.com' });
